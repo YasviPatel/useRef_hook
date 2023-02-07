@@ -5,16 +5,20 @@ import { useState,useEffect,useRef } from 'react';
 
 function App() {
   const [name,setName]=useState('hiii');
-  const prevName = useRef('');
+  const name1 = useRef('');
+  console.log('j')
 
 
   useEffect(()=>{
-    prevName.current = name;
+    console.log("useeffect run")
+    name1.current = name;
+    console.log(name1.current + " in useeffect")
   },[name])
   return (
     <>
-      <input value={name} onChange={e=>setName(e.target.value)}/>
-      <div>My name is {name} and before it was {prevName.current}</div>
+      <input value={name} onChange={e=>setName(e.target.value)} ref={name1}/>
+      {console.log(name1.current + " in return")}
+      <div>My name is {name} and  {name1.current}</div>
       
     </>
   );
